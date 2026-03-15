@@ -1,9 +1,12 @@
 #!/bin/sh
 
 # ── Branch name check ─────────────────────────────────────────────────────────
-# Allowed patterns:
+# For students, name your branch after yourself:
+#   feature/<your_name>           e.g. feature/nguyen_van_a
+#   feature/<your_name>_<number>  e.g. feature/nguyen_van_a_1 (if name is taken)
+#
+# Other allowed patterns:
 #   main | develop
-#   feature/<description>
 #   fix/<description>
 #   hotfix/<description>
 #   release/<version>
@@ -16,16 +19,15 @@ if ! echo "$BRANCH" | grep -qE "$PATTERN"; then
   echo ""
   echo "✖ Invalid branch name: \"$BRANCH\""
   echo ""
-  echo "  Branch names must follow the convention:"
-  echo "    main"
-  echo "    develop"
-  echo "    feature/<description>"
+  echo "  For students, use your name as the branch:"
+  echo "    feature/nguyen_van_a"
+  echo "    feature/nguyen_van_a_1   (if your name is already taken)"
+  echo ""
+  echo "  Other allowed patterns:"
   echo "    fix/<description>"
   echo "    hotfix/<description>"
   echo "    release/<version>"
   echo "    chore/<description>"
-  echo ""
-  echo "  Example: feature/add-login-page"
   echo ""
   exit 1
 fi

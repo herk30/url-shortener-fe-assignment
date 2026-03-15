@@ -1,73 +1,160 @@
-# React + TypeScript + Vite
+# URL Shortener — DevCamp 2026 Frontend Assignment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## Part A: Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### About This Project
 
-## React Compiler
+This is the **URL Shortener** frontend assignment for **DevCamp 2026 Frontend Training**. You will build a complete URL shortening web application — from UI to full API integration.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+> **Note on CSS:** The tech stack below is recommended to make your Capstone project easier. However, you are **not required to strictly follow Tailwind CSS** — feel free to use your preferred CSS solution (e.g. CSS Modules, SCSS, styled-components, etc.).
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Tech Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+| Technology                                                                                            | Purpose                            |
+| ----------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| [React 19](https://react.dev)                                                                         | UI library                         |
+| [TypeScript](https://www.typescriptlang.org)                                                          | Type safety                        |
+| [Vite](https://vite.dev)                                                                              | Build tool & dev server            |
+| [Tailwind CSS v4](https://tailwindcss.com)                                                            | Utility-first styling _(optional)_ |
+| [React Router DOM v7](https://reactrouter.com)                                                        | Client-side routing                |
+| [Axios](https://axios-http.com)                                                                       | HTTP client                        |
+| [ESLint](https://eslint.org)                                                                          | Code linting                       |
+| [Prettier](https://prettier.io)                                                                       | Code formatting                    |
+| [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/lint-staged/lint-staged) | Pre-commit hooks                   |
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Setup
+
+```bash
+# Install dependencies
+yarn
+
+# Start development server
+yarn dev
+
+# Build for production
+yarn build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Commands to Know
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Command             | Description                                       |
+| ------------------- | ------------------------------------------------- |
+| `yarn dev`          | Start local dev server at `http://localhost:5173` |
+| `yarn build`        | Type-check + production build                     |
+| `yarn lint`         | Run ESLint across the project                     |
+| `yarn format`       | Auto-format source files with Prettier            |
+| `yarn format:check` | Check formatting without writing (CI-friendly)    |
+| `yarn preview`      | Serve the production build locally                |
+
+---
+
+### Pre-commit Rules
+
+Every `git commit` automatically:
+
+1. **Checks your branch name** — must follow the convention below
+2. **Runs lint-staged** — formats and lints only staged files
+
+**For students — your branch must be named after yourself:**
+
 ```
+feature/<your_name>
+
+# If your name is already taken, append a number:
+feature/<your_name>_1
+feature/<your_name>_2
+```
+
+**Examples:**
+```
+feature/nguyen_van_a
+feature/nguyen_van_a_1    ← if feature/nguyen_van_a is taken
+```
+
+---
+
+## Part B: Assignment
+
+> Details and Figma file will be provided separately.
+
+The assignment has **2 phases**:
+
+### Phase 1 — Build the UI
+
+Implement the application UI based on the provided **Figma design file**. Focus on:
+
+- Pixel-accurate layout and components
+- Clean component structure
+- Using hooks and state management effectively
+- Using TypeScript for type safety
+
+### Phase 2 — API Integration
+
+Connect your UI to the backend built in the **companion BE assignment** to create a complete working flow:
+
+- Shorten a URL
+- Redirect via short URL
+
+---
+
+## Part C: Requirements
+
+### Must Have
+
+| #   | Requirement             | Details                                                            |
+| --- | ----------------------- | ------------------------------------------------------------------ |
+| 1   | **Clean & accurate UI** | Follows the Figma design; easy to use and visually consistent      |
+| 2   | **Input field**         | Accepts user input; handles focus state (focused/unfocused styles) |
+| 3   | **Shorten button**      | Has hover and focus effects; clicking it opens a result modal      |
+| 4   | **Copy button**         | Copies the shortened link to the user's clipboard                  |
+
+### Nice to Have
+
+| #   | Requirement              | Details                                                                                              |
+| --- | ------------------------ | ---------------------------------------------------------------------------------------------------- |
+| 1   | **Responsive UI**        | Layout adapts gracefully to different screen sizes                                                   |
+| 2   | **Success notification** | Shows a notification/toast when a link is successfully shortened                                     |
+| 3   | **BE integration**       | Full end-to-end flow connected to the backend API _(requires completing the BE training assignment)_ |
+
+> **Note:** BE integration is **optional** and requires completing the companion Backend training assignment first.
+
+---
+
+## Part D: Grading Evaluation
+
+| Criteria              | Description                                                                |
+| --------------------- | -------------------------------------------------------------------------- |
+| **UI**                | Visual accuracy compared to Figma, attention to detail                     |
+| **Functionality**     | All must-have features work correctly (input, shorten button, copy button) |
+| **Coding Style**      | Clean, readable code; consistent formatting; meaningful naming, utilize TypeScript effectively |
+| **Project Structure** | Logical file/folder organization; separation of concerns                   |
+
+> **Important:** BE integration is **not graded** and does **not count toward your score**. It exists purely as extra practice for students who complete the BE assignment. Only the UI and frontend functionality are evaluated.
+
+---
+
+## Part E: Submission
+
+### Requirements
+
+- [ ] Record and attach a **demo video** showing your working application
+- [ ] Open a **Pull Request into the `main` branch** of this repository
+
+### Pull Request
+
+When opening your PR, fill in the provided template:
+
+- **Name** — your full name
+- **Email** — the email address you used to register for DevCamp
+- **Changes** — what you built or changed
+- **Demo Video** — link or attachment of your demo recording
+
+> PRs without a demo video will not be accepted.
